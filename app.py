@@ -1,7 +1,7 @@
-[label app.py]
 from flask import Flask
-app = Flask(__name__)
+from homepage import homepage
+from webhook import webhook
 
-@app.route('/')
-def hello_world():
-    return 'Hello Sammy!'
+app = Flask(__name__)
+app.register_blueprint(homepage)
+app.register_blueprint(webhook)
