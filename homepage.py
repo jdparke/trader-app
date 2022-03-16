@@ -4,4 +4,4 @@ homepage = Blueprint('homepage', __name__)
 
 @homepage.route('/')
 def index():
-    return "<h1>Parker's Trader app NEW 23!!!</h1>"
+    return "<h1>Parker's Trader app NEW 24!!!</h1>"
