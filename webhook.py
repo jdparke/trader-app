@@ -42,4 +42,4 @@ def handle_github_hook():
   else:
     return jsonify({"else":"else"}), 200
 
-  return jsonify({"repo":repo}), 200
+  return jsonify({"success":"success"}), 200
