@@ -15,9 +15,7 @@ def handle_github_hook():
   hashhex = hmac.new(secret, request.data, digestmod='sha1').hexdigest()
   global repo
 
-  #if hmac.compare_digest(hashhex, signature):
-  if 1==1:
-
+  if hmac.compare_digest(hashhex, signature):
     repo = Repo(current_app.config.get('REPO_PATH'))
     origin = repo.remotes.origin
     origin.pull('--rebase')
