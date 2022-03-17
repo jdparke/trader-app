@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from homepage import homepage
+from download import download
 from webhook import webhook
 
 def create_app():
@@ -10,6 +11,7 @@ def create_app():
   app.config['GITHUB_SECRET'] = os.environ.get('GITHUB_SECRET')
   app.config['REPO_PATH'] = os.environ.get('REPO_PATH')
   app.register_blueprint(homepage)
+  app.register_blueprint(download)
   app.register_blueprint(webhook)
 
   return(app)

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Trader</title>
+      {% else %}
+      <title>Welcome to My Trader</title>
+      {% endif %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    </head>
+    <body>
+        <h1>My Trader</h1>
+        <hr>
+        <div class="menu">
+            <ul class="clean-ul">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/download">Download</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        
+    </body>
+</html>

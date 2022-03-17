@@ -4,5 +4,5 @@ homepage = Blueprint('homepage', __name__)
 
 @homepage.route('/')
 def index():
-    user = {'username': 'Miguel'}
-    return render_template('index.html', title='Home', user=user)
+    #user = {'username': 'Miguel'}
+    return render_template('index.html', title='Home')

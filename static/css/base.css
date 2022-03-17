@@ -1,0 +1,17 @@
+.menu {
+    width:200px;
+    display:inline-block;
+    /**border:1px solid black;**/
+    vertical-align: top;
+}
+
+.content {
+    width:600px;
+    /**border:1px solid black;**/
+    display:inline-block;
+}
+
+.clean-ul {
+    list-style-type:none;
+    padding:10px;
+}
