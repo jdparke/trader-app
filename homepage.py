@@ -1,7 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 homepage = Blueprint('homepage', __name__)
 
 @homepage.route('/')
 def index():
-    return "<h1>Parker's Trader app NEW 24!!!</h1>"
+    user = {'username': 'Miguel'}
+    return render_template('index.html', title='Home', user=user)
