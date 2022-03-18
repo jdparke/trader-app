@@ -12,8 +12,10 @@
         Current Directory: {{current_dir}}
     </div>
     <input type="button" value="Get Stock" onclick="downloadStock(event);" />
+    <input type="button" value="Plot Stock" onclick="plotStock(event);" />
     <div id="retrieving" style="color:#7FFFD4;padding-top:10px;">
     </div>
+    <div style="width:1400px;height:1000px" id='chart' class='chart'></div>
 </div>
 {% endblock %}
 
@@ -31,6 +33,28 @@
             dataType: "json",
             success: function(data) {
                 $("#retrieving").html("Successfully retrieved stock '" + $("#ticker").val() + "'!");
+            },
+            error: function(errMsg) {
+                $("#retrieving").html("Found error: " + JSON.stringify(errMsg));
+            }
+        });
+        return false;
+    }
+
+    function plotStock(e) {
+        e.preventDefault()
+        $("#retrieving").html("Plotting chart for '" + $("#ticker").val() + "'...");
+        var myticker = $("#ticker").val();
+        $.ajax({
+            type: "POST",
+            url: "/calc_plot?ticker=" + myticker,
+            data: JSON.stringify({}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                $("#retrieving").html("");
+                let plotlyChart = JSON.parse(data).data;
+                Plotly.newPlot('chart',plotlyChart,{});
             },
             error: function(errMsg) {
                 $("#retrieving").html("Found error: " + JSON.stringify(errMsg));
