@@ -56,7 +56,7 @@ calc_stat = Blueprint('calc_stat', __name__)
 @calc_stat.route('/calc_stat', methods=['POST'])
 def get_download():
     global PATH
-    PATH = "C:\\Wilshire_Stocks\\"
+    PATH = os.getcwd() + "/Stocks/"
 
     ticker = request.args.get('ticker')
 

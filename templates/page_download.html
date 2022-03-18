@@ -8,6 +8,9 @@
         <option value="{{ t }}">{{ t }}</option>
         {% endfor %}
     </select>
+    <div>
+        Current Directory: {{current_dir}}
+    </div>
     <input type="button" value="Get Stock" onclick="downloadStock(event);" />
     <div id="retrieving" style="color:#7FFFD4;padding-top:10px;">
     </div>

@@ -55,8 +55,9 @@ page_download = Blueprint('page_download', __name__)
 
 @page_download.route('/page_download')
 def get_download():
+    current_dir = os.getcwd()
     tickers = get_column_from_csv("Wilshire-5000-Stocks.csv", "Ticker")
-    return render_template('page_download.html', title='Download Stocks', tickers=tickers)
+    return render_template('page_download.html', title='Download Stocks', tickers=tickers, current_dir=current_dir)
 
 
 def get_column_from_csv(file, col_name):
