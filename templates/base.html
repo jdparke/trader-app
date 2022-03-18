@@ -17,13 +17,19 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/download">Download</a>
+                    <a href="/page_download">Download</a>
                 </li>
             </ul>
         </div>
         <div class="content">
             {% block content %}{% endblock %}
         </div>
+    
         
+        <footer>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            {% block footer %}{% endblock %}
+        </footer>
     </body>
+
 </html>

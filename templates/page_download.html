@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1>Download your stocks</h1>
+    <select name="ticker" id="ticker">
+        {% for t in tickers%}
+        <option value="{{ t }}">{{ t }}</option>
+        {% endfor %}
+    </select>
+    <input type="button" value="Get Stock" onclick="downloadStock(event);" />
+    <div id="retrieving" style="color:#7FFFD4;padding-top:10px;">
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script>
+    function downloadStock(e) {
+        $("#retrieving").html("Retrieving stock for '" + $("#ticker").val() + "'...");
+        e.preventDefault()
+        var myticker = $("#ticker").val();
+        $.ajax({
+            type: "POST",
+            url: "/calc_stat?ticker=" + myticker,
+            data: JSON.stringify({}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                $("#retrieving").html("Successfully retrieved stock '" + $("#ticker").val() + "'!");
+            },
+            error: function(errMsg) {
+                $("#retrieving").html("Found error: " + JSON.stringify(errMsg));
+            }
+        });
+        return false;
+    }
+</script>
+{% endblock %}
+
+
